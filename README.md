@@ -9,16 +9,18 @@
 
 
 ### Стек технологий использованный в проекте:
-```
-Python
-Django
-Django REST Framework
-REST API
-SQLite
-Аутентификация по JWT-токену
-```
+<ul>
+<li>Python</li>
+<li>Django</li>
+<li>Django REST Framework</li>
+<li>REST API</li>
+<li>Postgresql</li>
+<li>Аутентификация по JWT-токену</li>
+</ul>
+
 ## Шаблон env файла
 ```
+SECRET_KEY=your_secret_key # секретный ключ
 DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
 DB_NAME=postgres # имя базы данных
 POSTGRES_USER=postgres # логин для подключения к базе данных
@@ -31,8 +33,11 @@ DB_PORT=5432 # порт для подключения к БД
 ```
 git clone https://github.com/AVinAnd/infra_sp2.git
 ```
-2. Заполнить в директории infra файл .env
-
+2. Заполнить в директории infra файл .env 
+<br>Секретный ключ можно сгенерировать командой:
+```
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
 3. В терминале перейти в директорию с docker-compose.yaml
   и выполнить команду
 ```
@@ -47,9 +52,10 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
-6. Выполнить миграции 
-python manage.py migrate
-
+6. Заполнить базу данных из файла фикстур
+```
+docker-compose exec web python manage.py loaddata fixtures.json
+```
 7. Запустить проект 
 ```
 python manage.py runserver
