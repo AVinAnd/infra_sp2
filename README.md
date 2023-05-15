@@ -60,6 +60,5 @@ docker-compose exec web python manage.py loaddata fixtures.json
 python manage.py runserver
 ```
 Проект доступен по адресу http://localhost.
-## Об авторе
-Андрей Виноградов - студент Яндекс Практикум
-по курсу Python-разработчик
+### Об авторе
+Андрей Виноградов - python-developer, выпускник Яндекс Практикума по курсу Python-разработчик
